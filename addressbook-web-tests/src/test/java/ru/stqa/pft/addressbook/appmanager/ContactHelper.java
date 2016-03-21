@@ -49,4 +49,20 @@ public class ContactHelper extends HelperBase {
   public void deleteSelectedContact() {
     click(By.xpath("*//form[2]/div[2]/input"));
   }
+
+  public boolean isThereAContact() {
+    return isElementPresent(By.xpath("*//tr[2]/td[8]/a"));
+  }
+  public void goToAddNewUserPage() {
+    if (isElementPresent(By.tagName("Edit / add address book entry"))) {
+      return;
+    }
+    click(By.linkText("add new"));
+  }
+  public void createContact(ContactData contact, boolean create) {
+    goToAddNewUserPage();
+    fillContactForm(new ContactData("Aleksey", "Molodkin", "EnTaroLex", "+79266856646", "molodkin352@gmail.com","test1"),true);
+    submitNewUser();
+
+  }
 }

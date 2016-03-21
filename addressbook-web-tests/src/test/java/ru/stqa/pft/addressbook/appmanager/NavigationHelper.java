@@ -15,19 +15,13 @@ public class NavigationHelper extends HelperBase{
 
   public void gotoGroupPage() {
     if (isElementPresent(By.tagName("h1"))
-      && wd.findElement(By.tagName("h1")).getText().equals("Groups")
-      && isElementPresent(By.name("new"))){
-    return;
-    }
-      click(By.linkText("groups"));
-  }
-
-  public void goToAddNewUserPage() {
-    if (isElementPresent(By.tagName("Edit / add address book entry"))) {
+            && wd.findElement(By.tagName("h1")).getText().equals("Groups")
+            && isElementPresent(By.name("new"))) {
       return;
     }
-      click(By.linkText("add new"));
+    click(By.linkText("groups"));
   }
+
 
   public void goToHomePage(){
     if (isElementPresent(By.id("maintable"))){
@@ -35,3 +29,5 @@ public class NavigationHelper extends HelperBase{
     }
     click(By.linkText("home")); }
 }
+
+
