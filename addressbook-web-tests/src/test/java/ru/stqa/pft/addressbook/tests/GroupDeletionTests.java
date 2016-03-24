@@ -12,7 +12,7 @@ public class GroupDeletionTests extends TestBase{
     public void testGroupDeletion() {
         app.getNavigationHelper().gotoGroupPage();
         if (! app.getGroupHelper().isThereAGroup()){
-            app.getGroupHelper().createGroup(new GroupData("test1",null, null),true);
+            app.getGroupHelper().createGroup(new GroupData("test1",null, null));
         }
         List<GroupData> before = app.getGroupHelper().getGroupList();
         app.getGroupHelper().selectGroup(before.size() - 1);
