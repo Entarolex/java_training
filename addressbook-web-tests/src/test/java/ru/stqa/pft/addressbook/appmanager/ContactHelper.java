@@ -59,6 +59,19 @@ public class ContactHelper extends HelperBase {
     goToAddNewUserPage();
     fillContactForm(new ContactData("Aleksey", "Molodkin", "EnTaroLex", "+79266856646", "molodkin352@gmail.com","test1"));
     submitNewUser();
+    returnToContactListPage();
+  }
 
+  private void returnToContactListPage() {
+    if (isElementPresent(By.xpath("//input[@value=\"Send e-Mail\"]"))) {
+      return;
+    }
+    click(By.linkText("home"));
+
+  }
+
+  public int getContactCounter() {
+    //return wd.findElements(By.xpath("//input[@alt]")).size();
+    return wd.findElements(By.name("selected[]")).size();
   }
 }
