@@ -19,18 +19,14 @@ public class ContactHelper extends HelperBase {
     click(By.xpath("//div[@id='content']/form/input[21]"));
   }
 
-  public void fillContactForm(ContactData contactData, boolean creation) {
+  public void fillContactForm(ContactData contactData) {
 
     type(By.name("firstname"), contactData.getFirstName());
     type(By.name("lastname"), contactData.getLastName());
     type(By.name("nickname"), contactData.getNickName());
     type(By.name("mobile"), contactData.getMobileNumber());
     type(By.name("email"), contactData.getUserEmail());
-    if (creation){
-      new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
-    }else{
-      Assert.assertFalse(isElementPresent(By.name("new_group")));
-    }
+
   }
 
 
@@ -59,9 +55,9 @@ public class ContactHelper extends HelperBase {
     }
     click(By.linkText("add new"));
   }
-  public void createContact(ContactData contact, boolean create) {
+  public void createContact(ContactData contact) {
     goToAddNewUserPage();
-    fillContactForm(new ContactData("Aleksey", "Molodkin", "EnTaroLex", "+79266856646", "molodkin352@gmail.com","test1"),true);
+    fillContactForm(new ContactData("Aleksey", "Molodkin", "EnTaroLex", "+79266856646", "molodkin352@gmail.com","test1"));
     submitNewUser();
 
   }
