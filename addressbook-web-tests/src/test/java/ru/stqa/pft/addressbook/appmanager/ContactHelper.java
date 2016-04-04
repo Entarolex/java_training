@@ -61,7 +61,7 @@ public class ContactHelper extends HelperBase {
   }
   public void createContact(ContactData contact) {
     goToAddNewUserPage();
-    fillContactForm(new ContactData("Aleksey", "Molodkin", "EnTaroLex", "+79266856646", "molodkin352@gmail.com","test1"));
+    fillContactForm(contact);
     submitNewUser();
     returnToContactListPage();
   }
@@ -86,7 +86,7 @@ public class ContactHelper extends HelperBase {
         //String firstname = String.format(element.getAttribute("title"),("Select (%s %s)")).toString().split(" ")[1].replace("(","");
         String firstname = element.getAttribute("title").toString().split(" ")[1].replace("(","");
         String lastname = element.getAttribute("title").toString().split(" ")[2].replace(")","");
-        String id = element.getAttribute("value");
+        int id =Integer.parseInt(element.getAttribute("value"));
         ContactData contact = new ContactData(id,firstname, lastname, null, null, null);
         contacts.add(contact);
       }
