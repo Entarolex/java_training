@@ -12,7 +12,6 @@ import java.util.List;
 public class ContactDeletionTests extends TestBase {
   @Test
   public void testContactDeletion(){
-
     if (! app.getContactHelper().isThereAContact()){
       app.getContactHelper().createContact(new ContactData("Aleksey2", "Molodkin2", "EnTaroLex", "+79266856646", "molodkin352@gmail.com", null));
       System.out.println("контактов нет, создаю новый");
@@ -25,6 +24,8 @@ public class ContactDeletionTests extends TestBase {
     app.getNavigationHelper().goToHomePage();
     List<ContactData> after = app.getContactHelper().getContactList();
     Assert.assertEquals(after.size(), before.size() -1);
-  }
 
+    before.remove(before.size() -1);
+    Assert.assertEquals(before,after);
+  }
 }
