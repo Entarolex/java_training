@@ -16,7 +16,7 @@ public class ContactDeletionTests extends TestBase {
       System.out.println("контактов нет, создаю новый");
     }
     app.getNavigationHelper().goToHomePage();
-    app.getContactHelper().selectContact();
+    app.getContactHelper().selectContact(before - 1);
     app.getContactHelper().deleteSelectedContact();
     app.getContactHelper().closeAlertWindow();
     app.getNavigationHelper().goToHomePage();

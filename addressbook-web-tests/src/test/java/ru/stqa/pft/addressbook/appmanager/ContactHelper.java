@@ -30,20 +30,20 @@ public class ContactHelper extends HelperBase {
   }
 
 
-  public void initContactModification() {
-    click(By.xpath("*//tr[2]/td[8]/a"));
+  public void initContactModification(int index) {
+    wd.findElements(By.xpath("//img[@title='Edit']")).get(index).click();
   }
 
   public void submitContactUpdate() {
     click(By.name("update"));
   }
 
-  public void selectContact() {
-    click(By.xpath("*//tr[2]/td[1]/input"));
+  public void selectContact(int index) {
+    wd.findElements(By.name("selected[]")).get(index).click();
   }
 
   public void deleteSelectedContact() {
-    click(By.xpath("*//form[2]/div[2]/input"));
+    click(By.xpath("//input[@value='Delete']"));
   }
 
   public boolean isThereAContact() {
@@ -71,7 +71,6 @@ public class ContactHelper extends HelperBase {
   }
 
   public int getContactCounter() {
-    //return wd.findElements(By.xpath("//input[@alt]")).size();
     return wd.findElements(By.name("selected[]")).size();
   }
 }
