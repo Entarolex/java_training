@@ -1,41 +1,47 @@
 package ru.stqa.pft.addressbook.model;
 
 public class ContactData {
-  public void setId(int id) {
+
+  private int id= Integer.MAX_VALUE;;
+  private String firstName;
+  private String lastName;
+  private String nickName;
+  private String mobileNumber;
+  private String userEmail;
+
+  public ContactData withId(int id) {
     this.id = id;
+    return this;
+  }
+  public ContactData withFirstName(String firstName) {
+    this.firstName = firstName;
+    return this;
   }
 
-  private int id;
-  private final String firstName;
-  private final String lastName;
-  private final String nickName;
-  private final String mobileNumber;
-  private final String userEmail;
+  public ContactData withLastName(String lastName) {
+    this.lastName = lastName;
+    return this;
+  }
 
+  public ContactData withNickName(String nickName) {
+    this.nickName = nickName;
+    return this;
+  }
 
+  public ContactData withMobileNumber(String mobileNumber) {
+    this.mobileNumber = mobileNumber;
+    return this;
+  }
+
+  public ContactData withUserEmail(String userEmail) {
+    this.userEmail = userEmail;
+    return this;
+  }
 
   public int getId() {
     return id;
   }
 
-  public ContactData(int id, String firstName, String lastName, String nickName, String mobileNumber, String userEmail) {
-    this.id = id;
-    this.firstName = firstName;
-    this.lastName = lastName;
-    this.nickName = nickName;
-    this.mobileNumber = mobileNumber;
-    this.userEmail = userEmail;
-
-  }
-  public ContactData( String firstName, String lastName, String nickName, String mobileNumber, String userEmail) {
-    this.id = Integer.MAX_VALUE;
-    this.firstName = firstName;
-    this.lastName = lastName;
-    this.nickName = nickName;
-    this.mobileNumber = mobileNumber;
-    this.userEmail = userEmail;
-
-  }
 
   public String getFirstName() {
     return firstName;
