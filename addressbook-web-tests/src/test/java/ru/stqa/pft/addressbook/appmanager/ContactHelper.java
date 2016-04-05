@@ -30,9 +30,21 @@ public class ContactHelper extends HelperBase {
     type(By.name("nickname"), contactData.getNickName());
     type(By.name("mobile"), contactData.getMobileNumber());
     type(By.name("email"), contactData.getUserEmail());
-
   }
-
+  public void modify(int index, ContactData contact) {
+    goToHomePage();
+    initContactModification(index);
+    fillContactForm(contact);
+    submitContactUpdate();
+    goToHomePage();
+  }
+  public void delete(int index) {
+   goToHomePage();
+   selectContact(index);
+   deleteSelectedContact();
+   closeAlertWindow();
+   goToHomePage();
+  }
 
   public void initContactModification(int index) {
     wd.findElements(By.xpath("//img[@title='Edit']")).get(index).click();
@@ -59,14 +71,14 @@ public class ContactHelper extends HelperBase {
     }
     click(By.linkText("add new"));
   }
-  public void createContact(ContactData contact) {
+  public void create(ContactData contact) {
     goToAddNewUserPage();
     fillContactForm(contact);
     submitNewUser();
-    returnToContactListPage();
+    goToHomePage();
   }
 
-  private void returnToContactListPage() {
+  private void goToHomePage() {
     if (isElementPresent(By.xpath("//input[@value=\"Send e-Mail\"]"))) {
       return;
     }
@@ -78,7 +90,7 @@ public class ContactHelper extends HelperBase {
     return wd.findElements(By.name("selected[]")).size();
   }
 
-  public List<ContactData> getContactList() {
+  public List<ContactData> list() {
     List<ContactData> contacts = new ArrayList<ContactData>();
     List<WebElement> fio = wd.findElements(By.name("selected[]"));
 
