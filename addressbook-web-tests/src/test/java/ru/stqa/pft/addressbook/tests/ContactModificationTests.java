@@ -14,7 +14,7 @@ import java.util.List;
  */
 public class ContactModificationTests extends TestBase {
 
-  @Test
+  @Test(enabled = false)
   public void testContactModification(){
     if (! app.getContactHelper().isThereAContact()){
       System.out.println("элемент не найден, создаю новый контакт");
