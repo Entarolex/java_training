@@ -33,11 +33,20 @@ public class ContactHelper extends HelperBase {
     type(By.name("email"), contactData.getUserEmail());
   }
 
+  public void create(ContactData contact) {
+    goToAddNewUserPage();
+    fillContactForm(contact);
+    submitNewUser();
+    contactCache = null;
+    goToHomePage();
+  }
+
   public void modify(ContactData contact) {
     goToHomePage();
     initContactModificationByid(contact.getId());
     fillContactForm(contact);
     submitContactUpdate();
+    contactCache = null;
     goToHomePage();
   }
 
@@ -46,6 +55,7 @@ public class ContactHelper extends HelperBase {
     selectContactById(contact.getId());
     deleteSelectedContact();
     closeAlertWindow();
+    contactCache = null;
     goToHomePage();
   }
 
@@ -82,12 +92,6 @@ public class ContactHelper extends HelperBase {
     click(By.linkText("add new"));
   }
 
-  public void create(ContactData contact) {
-    goToAddNewUserPage();
-    fillContactForm(contact);
-    submitNewUser();
-    goToHomePage();
-  }
 
   private void goToHomePage() {
     if (isElementPresent(By.xpath("//input[@value=\"Send e-Mail\"]"))) {
@@ -97,7 +101,7 @@ public class ContactHelper extends HelperBase {
 
   }
 
-  public int getContactCounter() {
+  public int count() {
     return wd.findElements(By.name("selected[]")).size();
   }
 
