@@ -5,7 +5,9 @@ public class ContactData {
   private String firstName;
   private String lastName;
   private String nickName;
-  private String mobileNumber;
+  private String homePhone;
+  private String mobilePhone;
+  private String workPhone;
   private String userEmail;
 
   public ContactData withId(int id) {
@@ -26,9 +28,16 @@ public class ContactData {
     this.nickName = nickName;
     return this;
   }
-
-  public ContactData withMobileNumber(String mobileNumber) {
-    this.mobileNumber = mobileNumber;
+  public ContactData withHomePhone(String homePhone) {
+    this.homePhone = homePhone;
+    return this;
+  }
+  public ContactData withMobilePhone(String mobilePhone) {
+    this.mobilePhone = mobilePhone;
+    return this;
+  }
+  public ContactData withWorkPhone(String workPhone) {
+    this.workPhone = workPhone;
     return this;
   }
 
@@ -54,12 +63,28 @@ public class ContactData {
     return nickName;
   }
 
-  public String getMobileNumber() {
-    return mobileNumber;
+
+  public String getHomePhone() {
+    return homePhone;
+  }
+  public String getMobilePhone() {
+    return mobilePhone;
+  }
+  public String getWorkPhone() {
+    return workPhone;
   }
 
   public String getUserEmail() {
     return userEmail;
+  }
+
+  @Override
+  public String toString() {
+    return "ContactData{" +
+            "id=" + id +
+            ", firstName='" + firstName + '\'' +
+            ", lastName='" + lastName + '\'' +
+            '}';
   }
 
   @Override
@@ -82,16 +107,4 @@ public class ContactData {
     result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
     return result;
   }
-
-  @Override
-  public String toString() {
-    return "ContactData{" +
-
-            "id='" + id + '\'' +
-
-            ", firstName='" + firstName + '\'' +
-            ", lastName='" + lastName + '\'' +
-            '}';
-  }
-
 }
