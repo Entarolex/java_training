@@ -9,17 +9,61 @@ public class ContactData {
   private String mobilePhone;
   private String workPhone;
   private String allPhones;
+  private String email;
+  private String email2;
+  private String email3;
+  private String allEmail;
+  private String address;
 
   public String getAllPhones() {
     return allPhones;
+  }
+  public String getAllEmail() {
+    return allEmail;
   }
 
   public ContactData withAllPhones(String allPhones) {
     this.allPhones = allPhones;
     return this;
   }
+  public ContactData withAllEmail(String allEmail) {
+    this.allEmail = allEmail;
+    return this;
+  }
 
-  private String userEmail;
+  public String getEmail() {
+    return email;
+  }
+
+  public String getEmail2() {
+    return email2;
+  }
+
+  public String getEmail3() {
+    return email3;
+  }
+  public ContactData withEmail(String email) {
+    this.email = email;
+    return this;
+  }
+  public ContactData withEmail2(String email2) {
+    this.email2 = email2;
+    return this;
+  }
+  public ContactData withEmail3(String email3) {
+    this.email3 = email3;
+    return this;
+  }
+
+
+  public Object getAddress() {
+    return address;
+  }
+
+  public ContactData withAddress(String address) {
+    this.address = address;
+    return this;
+  }
 
 
   public ContactData withId(int id) {
@@ -53,10 +97,6 @@ public class ContactData {
     return this;
   }
 
-  public ContactData withUserEmail(String userEmail) {
-    this.userEmail = userEmail;
-    return this;
-  }
 
   public int getId() {
     return id;
@@ -86,9 +126,6 @@ public class ContactData {
     return workPhone;
   }
 
-  public String getUserEmail() {
-    return userEmail;
-  }
 
   @Override
   public String toString() {
@@ -119,5 +156,7 @@ public class ContactData {
     result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
     return result;
   }
+
+
 
 }
