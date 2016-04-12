@@ -6,7 +6,11 @@ import org.openqa.selenium.WebElement;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 /**
  * Created by a.molodkin on 11.03.2016.
@@ -83,8 +87,42 @@ public class ContactHelper extends HelperBase {
             .withAddress(address)
             .withHomePhone(home).withMobilePhone(mobile).withWorkPhone(work)
             .withEmail(email).withEmail2(email2).withEmail3(email3);
+  }
+
+  private void initContactDetailsInfoByid(int id) {
+    wd.findElement(By.xpath("//a[@href=\"view.php?id="+id+"\"]/img")).click();
+  }
+
+  public ContactData infoFromDetailsForm(ContactData contact) {
+    initContactDetailsInfoByid(contact.getId());
+    String  strings = wd.findElement(By.xpath("//div[4][text()]")).getText().toString();
+      Integer countSplitter = strings.split("\n").length;
+      String firstname = strings.split("\n")[0].split(" ")[0];
+      String lastname = strings.split("\n")[0].split(" ")[1];
+      String address = strings.split("\n")[1];
+      String home = strings.split("\n")[3].split(" ")[1];
+      String mobile = strings.split("\n")[4].split(" ")[1];
+      String work = strings.split("\n")[5].split(" ")[1];
+      String email = strings.split("\n")[7].split(" ")[0];
+      String email3,email2;
+      if(countSplitter>8) {
+        email2 = strings.split("\n")[8].split(" ")[0];
+      }else{email2 = null;
+      }
+      if(countSplitter>9) {
+        email3 = strings.split("\n")[9].split(" ")[0];
+      }else{email3="null";
+      }
+    wd.navigate().back();
+    return new ContactData().withId(contact.getId()).withFirstName(firstname).withLastName(lastname)
+            .withAddress(address)
+            .withHomePhone(home).withMobilePhone(mobile).withWorkPhone(work)
+            .withEmail(email).withEmail2(email2).withEmail3(email3);
 
   }
+
+
+
   public void submitContactUpdate() {
     click(By.name("update"));
   }
@@ -137,10 +175,12 @@ public class ContactHelper extends HelperBase {
       String address= cells.get(3).getText();
       String allPhones = cells.get(5).getText();
       String allEmail = cells.get(4).getText();
+      String allDetails = (cells.get(2).getText() + cells.get(1).getText()+ cells.get(3).getText()+cells.get(5).getText()+cells.get(4).getText());
       contactCache.add(new ContactData().withId(id).withFirstName(firstname).withLastName(lastname)
               .withAddress(address)
               .withAllPhones(allPhones)
-              .withAllEmail(allEmail));
+              .withAllEmail(allEmail)
+              .withAllDetails(allDetails));
     }
     return new Contacts(contactCache);
   }
