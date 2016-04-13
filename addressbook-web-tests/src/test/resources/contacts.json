@@ -1,0 +1,35 @@
+[
+  {
+    "firstName": "Aleksey0",
+    "lastName": "Molodkin0",
+    "address": "Moscow0",
+    "homePhone": "555-96-30",
+    "mobilePhone": "+7-926-685-66-40",
+    "workPhone": "+7-495-250-20-20",
+    "email": "asd@asd.ru0",
+    "email2": "bhbhb@bhba.com0",
+    "email3": "12sdoij@ooid.net0"
+  },
+  {
+    "firstName": "Aleksey1",
+    "lastName": "Molodkin1",
+    "address": "Moscow1",
+    "homePhone": "555-96-31",
+    "mobilePhone": "+7-926-685-66-41",
+    "workPhone": "+7-495-250-20-21",
+    "email": "asd@asd.ru1",
+    "email2": "bhbhb@bhba.com1",
+    "email3": "12sdoij@ooid.net1"
+  },
+  {
+    "firstName": "Aleksey2",
+    "lastName": "Molodkin2",
+    "address": "Moscow2",
+    "homePhone": "555-96-32",
+    "mobilePhone": "+7-926-685-66-42",
+    "workPhone": "+7-495-250-20-22",
+    "email": "asd@asd.ru2",
+    "email2": "bhbhb@bhba.com2",
+    "email3": "12sdoij@ooid.net2"
+  }
+]

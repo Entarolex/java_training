@@ -1,0 +1,35 @@
+<list>
+  <contact>
+    <firstName>Aleksey0</firstName>
+    <lastName>Molodkin0</lastName>
+    <address>Moscow0</address>
+    <homePhone>555-96-30</homePhone>
+    <mobilePhone>+7-926-685-66-40</mobilePhone>
+    <workPhone>+7-495-250-20-20</workPhone>
+    <email>asd@asd.ru0</email>
+    <email2>bhbhb@bhba.com0</email2>
+    <email3>12sdoij@ooid.net0</email3>
+  </contact>
+  <contact>
+    <firstName>Aleksey1</firstName>
+    <lastName>Molodkin1</lastName>
+    <address>Moscow1</address>
+    <homePhone>555-96-31</homePhone>
+    <mobilePhone>+7-926-685-66-41</mobilePhone>
+    <workPhone>+7-495-250-20-21</workPhone>
+    <email>asd@asd.ru1</email>
+    <email2>bhbhb@bhba.com1</email2>
+    <email3>12sdoij@ooid.net1</email3>
+  </contact>
+  <contact>
+    <firstName>Aleksey2</firstName>
+    <lastName>Molodkin2</lastName>
+    <address>Moscow2</address>
+    <homePhone>555-96-32</homePhone>
+    <mobilePhone>+7-926-685-66-42</mobilePhone>
+    <workPhone>+7-495-250-20-22</workPhone>
+    <email>asd@asd.ru2</email>
+    <email2>bhbhb@bhba.com2</email2>
+    <email3>12sdoij@ooid.net2</email3>
+  </contact>
+</list>
