@@ -109,6 +109,23 @@ public class ContactData {
     this.id = id;
     return this;
   }
+
+  @Override
+  public String toString() {
+    return "ContactData{" +
+            "id=" + id +
+            ", firstName='" + firstName + '\'' +
+            ", lastName='" + lastName + '\'' +
+            ", address='" + address + '\'' +
+            ", homePhone='" + homePhone + '\'' +
+            ", mobilePhone='" + mobilePhone + '\'' +
+            ", workPhone='" + workPhone + '\'' +
+            ", email='" + email + '\'' +
+            ", email2='" + email2 + '\'' +
+            ", email3='" + email3 + '\'' +
+            '}';
+  }
+
   public ContactData withFirstName(String firstName) {
     this.firstName = firstName;
     return this;
@@ -165,15 +182,6 @@ public class ContactData {
     return workPhone;
   }
 
-
-  @Override
-  public String toString() {
-    return "ContactData{" +
-            "id=" + id +
-            ", firstName='" + firstName + '\'' +
-            ", lastName='" + lastName + '\'' +
-            '}';
-  }
 
   @Override
   public boolean equals(Object o) {

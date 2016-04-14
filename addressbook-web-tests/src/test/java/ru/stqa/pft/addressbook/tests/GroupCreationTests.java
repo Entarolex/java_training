@@ -5,6 +5,8 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.thoughtworks.xstream.XStream;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.GroupData;
@@ -14,6 +16,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+
 import java.util.stream.Collectors;
 
 import static org.hamcrest.CoreMatchers.equalTo;
@@ -21,6 +24,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 
 public class GroupCreationTests extends TestBase{
+
 
   @DataProvider
   public Iterator<Object[]> validGroupsFromXml() throws IOException {
@@ -55,7 +59,6 @@ public class GroupCreationTests extends TestBase{
 
   @Test(dataProvider = "validGroupsFromJson")
   public void testGroupCreation(GroupData group) {
-
     app.goTo().groupPage();
     Groups before = app.group().all();
     app.group().create(group);
