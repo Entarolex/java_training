@@ -15,8 +15,6 @@ public class ContactData {
   @Expose
   private String lastName;
   @Expose
-  private String nickName;
-  @Expose
   private String address;
   @Expose
   private String homePhone;
@@ -136,10 +134,6 @@ public class ContactData {
     return this;
   }
 
-  public ContactData withNickName(String nickName) {
-    this.nickName = nickName;
-    return this;
-  }
   public ContactData withHomePhone(String homePhone) {
     this.homePhone = homePhone;
     return this;
@@ -165,10 +159,6 @@ public class ContactData {
 
   public String getLastName() {
     return lastName;
-  }
-
-  public String getNickName() {
-    return nickName;
   }
 
 

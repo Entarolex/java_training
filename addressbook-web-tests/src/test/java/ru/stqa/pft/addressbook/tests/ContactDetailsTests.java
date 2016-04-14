@@ -14,7 +14,9 @@ public class ContactDetailsTests extends TestBase {
   @BeforeMethod
   public void ensurePreconditions() {
     if (app.contact().all().size() == 0) {
-      app.contact().create(new ContactData().withFirstName("Aleksey3").withLastName("Molodkin3").withNickName("EnTaroLex").withHomePhone("555-66-33").withMobilePhone("+79266856646").withWorkPhone("495-200-10-20").withEmail("molodkin352@gmail.com"));
+      app.contact().create(new ContactData().withFirstName("Aleksey3").withLastName("Molodkin3")
+              .withHomePhone("555-66-33").withMobilePhone("+79266856646").withWorkPhone("495-200-10-20")
+              .withEmail("molodkin352@gmail.com"));
       System.out.println("контактов нет, создаю новый");
     }
   }
