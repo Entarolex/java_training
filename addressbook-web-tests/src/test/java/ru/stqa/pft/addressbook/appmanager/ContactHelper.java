@@ -98,7 +98,7 @@ public class ContactHelper extends HelperBase {
   public ContactData infoFromDetailsForm(ContactData contact) {
     initContactDetailsInfoByid(contact.getId());
     String allDetails = wd.findElement(By.xpath("//div[4][text()]")).getText().replaceAll("\n\n", "\n").toString();
-    List<String> strings = new ArrayList<String>(Arrays.asList(allDetails.split("\n")));
+    List<String> strings = new ArrayList<>(Arrays.asList(allDetails.split("\n")));
 
     String firstname = strings.get(0).split(" ")[0];
     String lastname = strings.get(0).split(" ")[1];
