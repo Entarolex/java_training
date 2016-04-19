@@ -55,10 +55,13 @@ private void run() throws IOException {
   private void saveAsCsv(List<ContactData> contacts, File file) throws IOException {
     Writer writer = new FileWriter(file);
     for (ContactData contact:contacts){
-      writer.write(String.format("%s;%s;%s;%s;%s;%s;%s;%s;%s\n",contact.getFirstName(),contact.getLastName()
+      writer.write(String.format("%s;%s;%s;%s;%s;%s;%s;%s;%s;%s\n",contact.getFirstName(),contact.getLastName()
               ,contact.getAddress()
               ,contact.getHomePhone(),contact.getMobilePhone(),contact.getWorkPhone()
-              ,contact.getEmail(),contact.getEmail2(),contact.getEmail3()));
+              ,contact.getEmail(),contact.getEmail2(),contact.getEmail3()
+              ,contact.getPhoto()
+      ));
+
     }
     writer.close();
   }
@@ -87,7 +90,7 @@ private void run() throws IOException {
               .withAddress(String.format("Moscow%s",i))
               .withHomePhone(String.format("555-96-3%s",i)).withMobilePhone(String.format("+7-926-685-66-4%s",i)).withWorkPhone(String.format("+7-495-250-20-2%s",i))
               .withEmail(String.format("asd@asd.ru%s",i)).withEmail2(String.format("bhbhb@bhba.com%s",i)).withEmail3(String.format("12sdoij@ooid.net%s",i))
-               );
+              .withPhoto(null));
     return contacts;
   }
 

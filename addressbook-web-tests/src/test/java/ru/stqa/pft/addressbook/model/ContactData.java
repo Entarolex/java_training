@@ -7,6 +7,7 @@ import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.io.File;
+
 @Entity
 @Table(name = "addressbook")
 @XStreamAlias("contact")
@@ -67,18 +68,18 @@ public class ContactData {
 
   @Transient
   private String allDetails;
-
-  @Expose
+  @Transient
+  /*@Expose
   @Column(name = "photo")
-  @Type(type = "text")
-  private String  photo;
+  @Type(type = "text")*/
+  private File photo;
 
   public File getPhoto() {
-    return new File (photo);
+    return photo;
   }
 
   public ContactData withPhoto(File photo) {
-    this.photo = photo.getPath();
+    this.photo = photo;
     return this;
   }
 
