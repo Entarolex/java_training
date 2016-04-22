@@ -10,6 +10,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Properties;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by a.molodkin on 21.04.2016.
@@ -38,11 +39,19 @@ public class ApplicationManager {
     }else if (browser.equals(BrowserType.IE)){
       wd=new InternetExplorerDriver();
     }
-    //wd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+    wd.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
     wd.get(properties.getProperty("web.baseUrl"));
   }
-  
+
   public void stop() {
     wd.quit();
+  }
+
+  public HttpSession newSession(){
+    return new HttpSession(this);
+  }
+
+  public String getProperty(String key) {
+    return properties.getProperty(key);
   }
 }
