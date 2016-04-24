@@ -17,13 +17,13 @@ import java.util.concurrent.TimeUnit;
  */
 public class ApplicationManager {
   private final Properties properties;
-  private WebDriver wd;
+  WebDriver wd;
 
   private String browser;
   private RegistrationHelper registrationHelper;
   private FtpHelper ftp;
   private MailHelper mailHelper;
-  private ResetPasswordHelper resetPasswordHelper;
+  private AdminHelper adminHelper;
 
 
   public ApplicationManager(String browser) {
@@ -52,11 +52,11 @@ public class ApplicationManager {
     return properties.getProperty(key);
   }
 
-  public ResetPasswordHelper resetPassword() {
-    if (resetPasswordHelper == null) {
-      resetPasswordHelper = new ResetPasswordHelper(this);
+  public AdminHelper adminHelper() {
+    if (adminHelper == null) {
+      adminHelper = new AdminHelper(this);
     }
-    return resetPasswordHelper;
+    return adminHelper;
   }
 
   public RegistrationHelper registration() {
