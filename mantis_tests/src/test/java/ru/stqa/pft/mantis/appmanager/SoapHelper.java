@@ -11,7 +11,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.rmi.RemoteException;
 import java.util.Arrays;
-import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -59,12 +58,15 @@ public class SoapHelper {
 
   public Set<Issue> getIssues(Project pr) throws RemoteException, MalformedURLException, ServiceException {
     MantisConnectPortType mc = getMantisConnect();
+   // IssueData issues = mc. mc_issue_get(app.getProperty("web.adminLogin"), app.getProperty("web.adminPassword"), BigInteger.valueOf(pr.getId()));
     IssueData[] issues = mc. mc_project_get_issues(adminLogin, adminPassword, BigInteger.valueOf(pr.getId())
             ,BigInteger.valueOf(1),BigInteger.valueOf(10));
-    //преобразование полученных данных в объекты project
     return Arrays.asList(issues).stream()
-            .map((i) -> new Issue().withId(i.getId().intValue()).withSummary(i.getSummary()).withDescription(i.getDescription()))
+            .map((i) -> new Issue().withId(i.getId().intValue()).withSummary(i.getSummary()).withDescription(i.getDescription())
+            //.withResolution(i.getResolution())
+            .withStatus(i.getStatus()))
             .collect(Collectors.toSet());
+
   }
 
 }
