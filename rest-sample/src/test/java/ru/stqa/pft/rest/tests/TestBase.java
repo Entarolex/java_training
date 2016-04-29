@@ -40,7 +40,7 @@ public class TestBase {
 
     /* MantisConnectPortType mc = app.soap().getMantisConnect();
     IssueData issue = mc.mc_issue_get(app.getProperty("web.adminLogin"), app.getProperty("web.adminPassword"), BigInteger.valueOf(issueId));
-    if (issue.getStatus().getName().equals("resolved") || issue.getStatus().getName().equals("closed")) {
+    if (issue.getState().getName().equals("resolved") || issue.getState().getName().equals("closed")) {
       return false;
     }
     return true;*/

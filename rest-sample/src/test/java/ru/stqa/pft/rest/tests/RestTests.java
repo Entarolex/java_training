@@ -30,14 +30,15 @@ public class RestTests extends TestBase {
     Set<Project> projects = getProjects();
     Set<Issue> iss = getIssues();
     System.out.println("Count issues: "+iss.size());
-    List<Issue> issues = new Arrays.asList(iss.)
+    //List<Issue> issues = new Arrays.asList(iss.)
     Set<Issue> issue = (Set<Issue>) iss.iterator().next();
-    for (Issue i: issue){
-      System.out.println("id " + i.getId());
-      System.out.println("Description " + i.getDescription());
-      System.out.println("Subject " + i.getSubject());
-      System.out.println("state " + i.getState_name());//1- InProgress //2- Resolved
+    for (Issue i: iss){
 
+      System.out.println("id " + i.getId());
+  //    System.out.println("Description " + i.getDescription());
+//      System.out.println("Subject " + i.getSubject());
+      System.out.println("state " + i.getState_name());//1- InProgress //2- Resolved
+      skipIfNotFixed(i.getId());
       System.out.println("--");
     }
 }
@@ -55,7 +56,7 @@ public class RestTests extends TestBase {
 
   public Set<Project> getProjects() throws IOException {
     String projects = getExecutor().execute(Request.Get("http://demo.bugify.com/api/projects.json")).returnContent().asString();
-    JsonElement parsed = new JsonParser().parse(projects);
+    System.out.println("projects"+projects);JsonElement parsed = new JsonParser().parse(projects);
     JsonElement issues = parsed.getAsJsonObject().get("projects");
     return new Gson().fromJson(issues,new TypeToken<Set<Issue>>(){}.getType());
   }
@@ -63,22 +64,20 @@ public class RestTests extends TestBase {
     String json = getExecutor().execute(Request.Get("http://demo.bugify.com/api/issues.json"))
             .returnContent().asString();
     //System.out.println(json1);
-    String filters = getExecutor().execute(Request.Get("http://demo.bugify.com/api/filters/1/issues.json")).returnContent().asString();
-    System.out.println(filters);
+//    String filters = getExecutor().execute(Request.Get("http://demo.bugify.com/api/filters/3/issues.json")).returnContent().asString();
+    //System.out.println(filters);
 
     //String json = getExecutor().execute(Request.Get("http://demo.bugify.com/api/filters/0/issues.json")).returnContent().asString();
     System.out.println(json);
     JsonElement parsed = new JsonParser().parse(json);
     JsonElement issues = parsed.getAsJsonObject().get("issues");
-    JsonElement parsedF = new JsonParser().parse(filters);
-    JsonElement filtersF = parsed.getAsJsonObject().get("filters");
-    System.out.println("\nfiltersF "+new Gson().fromJson(filtersF,new TypeToken<Set<Issue>>(){}.getType()));
-    //return new Gson().fromJson(issues,new TypeToken<Set<Issue>>(){}.getType());
-    IssueData[] issueDatas= new Gson().fromJson(issues,new TypeToken<Set<Issue>>(){}.getType());
-    return Arrays.asList(issueDatas).stream()
-            .map((i) -> new Issue().withId(i.getId().intValue()).withSummary(i.getSummary()).withDescription(i.getDescription())
-                    //.withResolution(i.getResolution())
-                    .withStatus(i.getStatus()))
+    //JsonElement parsedF = new JsonParser().parse(filters);
+    //JsonElement filtersF = parsed.getAsJsonObject().get("filters");
+    //System.out.println("\nfiltersF "+new Gson().fromJson(filtersF,new TypeToken<Set<Issue>>(){}.getType()));
+    /*return new Gson().fromJson(issues,new TypeToken<Set<Issue>>(){}.getType());*/
+    IssueData[] iss= new Gson().fromJson(issues,new TypeToken<Set<Issue>>(){}.getType());
+    return  Arrays.asList(iss).stream()
+            .map((i) -> new Issue().withId(i.getId().intValue()).withStateName(i.getStatus().getName()))
             .collect(Collectors.toSet());
   }
 

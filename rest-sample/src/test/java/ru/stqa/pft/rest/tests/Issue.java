@@ -1,5 +1,7 @@
 package ru.stqa.pft.rest.tests;
 
+import biz.futureware.mantis.rpc.soap.client.ObjectRef;
+
 /**
  * Created by a.molodkin on 28.04.2016.
  */
@@ -65,4 +67,6 @@ public class Issue {
     result = 31 * result + (description != null ? description.hashCode() : 0);
     return result;
   }
+
+
 }
