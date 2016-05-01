@@ -8,3 +8,8 @@ repositories{
 dependencies{
     compile 'org.testng:testng:6.9.10'
 }
+task testGroups(type:Test){
+    useTestNG(){
+        suites 'src/test/resources/testng.xml'
+    }
+}
